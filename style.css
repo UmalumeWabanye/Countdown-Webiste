@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Frijole&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+body {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #edeae0;
+  color: #5371fe;
+  overflow: hidden;
+  position: relative;
+}
+
+.countdown-container {
+  z-index: 1; /* Keeps the countdown in the foreground */
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-family: "Fjalla One";
+  font-size: 2.4rem;
+  color: #ff904a;
+  margin-bottom: 30px;
+}
+
+#countdown {
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  letter-spacing: 1px;
+  flex-wrap: wrap;
+}
+
+#countdown div {
+  transition:
+    transform 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+}
+
+#countdown div:hover {
+  transform: scale(1.1);
+  color: #ff904a;
+}
+
+#countdown span {
+  font-family: "Frijole";
+  display: block;
+  font-size: 3rem;
+}
+
+#countdown p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #5371fe;
+  transition: color 0.3s ease;
+}
+
+#countdown div:hover p {
+  color: #ff904a;
+}
+
+#message {
+  font-size: 1.8rem;
+  margin-top: 40px;
+  color: #ff904a;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+.hidden {
+  display: none;
+}
+
+.animate {
+  animation: reveal 2s ease-in-out;
+}
+
+/* Background Animations */
+@keyframes bgChange1 {
+  0% {
+    background: linear-gradient(135deg, #1a1a1d, #eaeaea);
+  }
+  50% {
+    background: linear-gradient(135deg, #ff904a, #1a1a1d);
+  }
+  100% {
+    background: linear-gradient(135deg, #1a1a1d, #eaeaea);
+  }
+}
+
+@keyframes bgChange2 {
+  0% {
+    background: linear-gradient(45deg, #1a1a1d, #4e4e50);
+  }
+  50% {
+    background: linear-gradient(45deg, #ff6f61, #4e4e50);
+  }
+  100% {
+    background: linear-gradient(45deg, #1a1a1d, #4e4e50);
+  }
+}
+
+@keyframes bgCircles {
+  0% {
+    background: radial-gradient(
+      circle at 50% 50%,
+      transparent 20%,
+      rgba(255, 255, 255, 0.2) 30%,
+      transparent 40%
+    );
+  }
+  50% {
+    background: radial-gradient(
+      circle at 50% 50%,
+      transparent 20%,
+      rgba(255, 255, 255, 0.5) 30%,
+      transparent 40%
+    );
+  }
+  100% {
+    background: radial-gradient(
+      circle at 50% 50%,
+      transparent 20%,
+      rgba(255, 255, 255, 0.2) 30%,
+      transparent 40%
+    );
+  }
+}
+
+.background-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Keeps the background behind everything */
+  animation: bgChange1 10s ease-in-out infinite alternate; /* First animation */
+  transition: background 2s ease-in-out;
+}
+
+.background-layer:nth-child(1) {
+  animation: bgChange1 15s ease-in-out infinite alternate;
+}
+
+.background-layer:nth-child(2) {
+  animation: bgChange2 15s ease-in-out 7.5s infinite alternate; /* Delayed for transition */
+}
+
+.background-layer:nth-child(3) {
+  animation: bgCircles 20s ease-in-out infinite alternate;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  #countdown {
+    font-size: 2.5rem;
+    gap: 15px;
+  }
+
+  #countdown span {
+    font-size: 2.5rem;
+  }
+
+  #countdown p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #countdown {
+    font-size: 2rem;
+    gap: 10px;
+  }
+
+  #countdown span {
+    font-size: 2rem;
+  }
+
+  #countdown p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
